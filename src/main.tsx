@@ -7,9 +7,14 @@ import "./styles.css";
 
 const queryClient = new QueryClient();
 
+// Detect basepath dynamically for GitHub Pages subpath vs custom domains
+const isGithubPages = typeof window !== "undefined" && window.location.hostname.includes("github.io");
+const basepath = isGithubPages ? "/nazanin_academy" : "/";
+
 // Create router
 const router = createRouter({
   routeTree,
+  basepath,
   context: {
     queryClient,
   },
